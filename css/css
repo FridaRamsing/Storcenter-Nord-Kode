@@ -1,0 +1,129 @@
+/*Baggrund for akvariet*/
+
+body{
+    background-image: url("images/akvarie.gif");
+    background-size: cover;
+    background-position: center;
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+/*Animation for fiskene*/
+
+
+#hugo{
+    position: absolute;
+    top: 50%;
+    left: -300px;
+    width: 300px;
+    height: 300px;
+    animation-name: Hugo;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes Hugo {
+    0% {
+        left: -300px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    100% {
+        left: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+/*Animation for fisk 2*/
+
+#fisk2{
+    position: absolute;
+    top: 85%;
+    left: -300px;
+    width: 250px;
+    height: 250px;
+    animation-name: Fisk2;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay: 5s;
+}
+
+@keyframes Fisk2 {
+    0% {
+        left: -300px;
+        top: 85%;
+        transform: translateY(-50%);
+    }
+    100% {
+        left: 100%;
+        top: 85%;
+        transform: translateY(-50%);
+    }
+}
+
+/* Bobler */
+.boble {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.3) 70%, transparent 100%);
+    border-radius: 50%;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+#boble1 {
+    width: 20px;
+    height: 20px;
+    left: 15%;
+    bottom: -50px;
+    animation: bobler 8s infinite;
+    animation-delay: 0s;
+}
+
+#boble2 {
+    width: 15px;
+    height: 15px;
+    left: 35%;
+    bottom: -50px;
+    animation: bobler 6s infinite;
+    animation-delay: 2s;
+}
+
+#boble3 {
+    width: 25px;
+    height: 25px;
+    left: 60%;
+    bottom: -50px;
+    animation: bobler 10s infinite;
+    animation-delay: 4s;
+}
+
+#boble4 {
+    width: 18px;
+    height: 18px;
+    left: 80%;
+    bottom: -50px;
+    animation: bobler 7s infinite;
+    animation-delay: 1s;
+}
+
+@keyframes bobler {
+    0% {
+        bottom: -50px;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        bottom: 100vh;
+        opacity: 0;
+    }
+}
