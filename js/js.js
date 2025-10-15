@@ -67,3 +67,16 @@ function nulstilFisk2(event){
     `;
     document.getElementById('fisk2').addEventListener('click', fisk2Click);
 }
+
+// I DOMContentLoaded funktionen:
+document.getElementById('fisk3').addEventListener('click', fisk3Click);
+
+// Nye funktioner:
+function fisk3Click(event){
+    event.stopPropagation();
+    document.querySelector("#fisk3").innerHTML = `
+    <div onclick="fisk3Alert(event)">
+    <h2>Jeg er din nye fisk!</h2>
+    <button onclick="nulstilFisk3(event)">Tilbage</button>
+    </div>`;
+}

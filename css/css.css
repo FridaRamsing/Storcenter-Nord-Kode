@@ -81,6 +81,31 @@ img{
     animation-iteration-count: infinite;
 }
 
+#fisk3{
+    position: absolute;
+    top: 25%; /* flyttet højere op end fisken i midten */
+    right: -200px; /* starter fra højre side */
+    width: 150px; /* størrelse */
+    height: 150px;
+    animation-name: Fisk3;
+    animation-duration: 18s; /* hvor hurtigt */
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay: 3s; /* forsinkelse */
+    transform: scaleX(1); /* fisken ikke vendt */
+}
+
+@keyframes Fisk3 {
+    0% { 
+        right: -200px; 
+        transform: translateY(-50%) scaleX(1); 
+    }
+    100% { 
+        right: 100%; 
+        transform: translateY(-50%) scaleX(1); 
+    }
+}
+
 #boble1 {
     width: 20px;
     height: 20px;
