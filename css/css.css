@@ -1,7 +1,13 @@
 /*Baggrund for akvariet*/
 
 body{
-    background-image: url("images/akvarie.gif");
+    background-image: url("../images/baggrund hav 1.png");
+    background-size: cover;
+    background-position: center;
+}und for akvariet*/
+
+body{
+    background-image: url("../images/baggrund_hav_1.png");
     background-size: cover;
     background-position: center;
 }
