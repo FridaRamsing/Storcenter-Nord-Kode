@@ -1,68 +1,94 @@
-/*Baggrund for akvariet*/
+/*Frida - Forfatter af CSS koden*/
 
+/* BAGGRUND FOR AKVARIET - Skaber det visuelle fundament */
+/* Body elementet dækker hele browser-vinduet og fungerer som vores "akvarium" */
 body{
+    /* BAGGRUNDSBILLEDE: Bruger relative sti (../) for at gå op en mappe fra css/ til rod-mappen */
+    /* Dette skaber havbunden/akvarie-miljøet som alle fisk svømmer foran */
     background-image: url("../images/baggrund hav 1.png");
+    
+    /* SKALERING: 'cover' sikrer billedet dækker hele skærmen uden at blive forvrænget */
+    /* Beskærer billedet hvis nødvendigt for at fylde hele viewport */
     background-size: cover;
-    background-position: center;
-}und for akvariet*/
-
-body{
-    background-image: url("../images/baggrund_hav_1.png");
-    background-size: cover;
+    
+    /* CENTRERING: Placerer billedets centrum i viewport centrum */
+    /* Sikrer den vigtigste del af baggrunden altid er synlig */
     background-position: center;
 }
 
+/* RESPONSIVT BILLEDE DESIGN - Sikrer alle billeder tilpasser sig deres container */
 img{
+    /* Fylder hele bredden af parent-elementet */
     width: 100%;
+    /* Bevarer billedets proportioner automatisk */
     height: auto;
 }
-/*Animation for fiskene*/
 
+/* ==================== FISK ANIMATIONER ==================== */
 
+/* HUGO FISK - Hovedfisken der svømmer fra venstre til højre */
 #hugo{
+    /* POSITIONERING: 'absolute' tager elementet ud af normal flow */
+    /* Dette tillader fri positionering og overlap med andre elementer */
     position: absolute;
+    
+    /* VERTIKAL PLACERING: 50% fra toppen = midt på skærmen */
     top: 50%;
+    
+    /* HORISONTAL START: -300px betyder fisken starter uden for venstre side */
+    /* Negativ værdi skjuler fisken før animationen starter */
     left: -300px;
+    
+    /* STØRRELSE: Fast width og height for konsistent visning */
     width: 300px;
     height: 300px;
-    animation-name: Hugo;
-    animation-duration: 15s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    
+    /* ANIMATION EGENSKABER: */
+    animation-name: Hugo;              /* Henviser til @keyframes Hugo */
+    animation-duration: 15s;           /* Tid for en komplet animation */
+    animation-iteration-count: infinite; /* Gentager for evigt */
+    animation-timing-function: linear;  /* Konstant hastighed (ikke acceleration) */
 }
 
+/* HUGO ANIMATION KEYFRAMES - Definerer animationens forløb */
 @keyframes Hugo {
+    /* START POSITION (0% af animationen) */
     0% {
-        left: -300px;
-        top: 50%;
-        transform: translateY(-50%);
+        left: -300px;                  /* Starter uden for skærmen til venstre */
+        top: 50%;                      /* Midt på skærmen vertikalt */
+        transform: translateY(-50%);   /* Centrerer fisken vertikalt på sin position */
     }
+    /* SLUT POSITION (100% af animationen) */
     100% {
-        left: 100%;
-        top: 50%;
-        transform: translateY(-50%);
+        left: 100%;                    /* Slutter uden for skærmen til højre */
+        top: 50%;                      /* Samme vertikale position */
+        transform: translateY(-50%);   /* Bevarer vertikal centrering */
     }
 }
 
-/*Animation for fisk 2*/
-
+/* FISK2 - Anden fisk med forskellige timing og position */
 #fisk2{
     position: absolute;
+    /* LAVERE POSITION: 85% fra top placerer fisken nær bunden */
     top: 85%;
     left: -300px;
+    /* MINDRE STØRRELSE: Skaber variation og dybde i akvariet */
     width: 250px;
     height: 250px;
+    
+    /* FORSKELLIGE ANIMATION INDSTILLINGER: */
     animation-name: Fisk2;
-    animation-duration: 20s;
+    animation-duration: 20s;           /* Langsommere end Hugo (20s vs 15s) */
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-    animation-delay: 5s;
+    animation-delay: 5s;               /* Venter 5 sekunder før start - undgår kollision */
 }
 
+/* FISK2 ANIMATION - Samme mønster som Hugo men med andre værdier */
 @keyframes Fisk2 {
     0% {
         left: -300px;
-        top: 85%;
+        top: 85%;                      /* Følger fiskens position (bund af skærm) */
         transform: translateY(-50%);
     }
     100% {
@@ -72,89 +98,124 @@ img{
     }
 }
 
-/* Bobler */
-.boble {
-    position: absolute;
-    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.3) 70%, transparent 100%);
-    border-radius: 50%;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-}
-
+/* FISK3 - Tredje fisk der svømmer MODSAT retning (højre til venstre) */
 #fisk3{
     position: absolute;
-    top: 25%; /* flyttet højere op end fisken i midten */
-    right: -200px; /* starter fra højre side */
-    width: 150px; /* størrelse */
+    /* MELLEM POSITION: 25% giver varieret højde mellem Hugo (50%) og toppen */
+    top: 25%;
+    
+    /* HØJRE START: Starter fra højre side i stedet for venstre */
+    right: -200px;                     /* Negativ right = uden for højre side */
+    
+    /* MINDRE STØRRELSE: Undgår kollisioner og skaber variation */
+    width: 150px;
     height: 150px;
+    
     animation-name: Fisk3;
-    animation-duration: 18s; /* hvor hurtigt */
+    animation-duration: 18s;           /* Mellem hastighed */
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-    animation-delay: 3s; /* forsinkelse */
-    transform: scaleX(1); /* fisken ikke vendt */
+    animation-delay: 3s;               /* Kort delay */
+    
+    /* BILLEDORIENTERING: scaleX(1) = normal retning (ikke spejlvendt) */
+    /* Nogle fiskebilleder er allerede orienteret korrekt */
+    transform: scaleX(1);
 }
 
+/* FISK3 ANIMATION - Modsatte retning af Hugo og Fisk2 */
 @keyframes Fisk3 {
     0% { 
-        right: -200px; 
+        right: -200px;                 /* Starter fra højre side */
+        /* KOMBINERET TRANSFORM: translateY centrerer + scaleX styrer orientering */
         transform: translateY(-50%) scaleX(1); 
     }
     100% { 
-        right: 100%; 
+        right: 100%;                   /* Slutter ved venstre side */
         transform: translateY(-50%) scaleX(1); 
     }
 }
 
+/* ==================== BOBLE SYSTEM ==================== */
+
+/* BOBLE GRUNDSTIL - Fælles styling for alle bobler */
+.boble {
+    position: absolute;
+    
+    /* AVANCERET GRADIENT: Skaber realistisk boble-effekt */
+    /* radial-gradient laver cirkulær gradient fra centrum */
+    /* rgba(255,255,255,0.8) = hvid med 80% gennemsigtighed i centrum */
+    /* rgba(255,255,255,0.3) = hvid med 30% gennemsigtighed i kanten */
+    /* transparent = helt gennemsigtig yderst */
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.3) 70%, transparent 100%);
+    
+    /* PERFEKT CIRKEL: 50% border-radius på kvadratisk element */
+    border-radius: 50%;
+    
+    /* ANIMATION INDSTILLINGER: */
+    animation-timing-function: ease-in-out; /* Naturlig acceleration/deceleration */
+    animation-iteration-count: infinite;    /* Kontinuerlige bobler */
+}
+
+/* INDIVIDUELLE BOBLER - Hver boble har unik størrelse, position og timing */
+
+/* BOBLE 1 - Mellem størrelse, venstre side */
 #boble1 {
     width: 20px;
     height: 20px;
-    left: 15%;
-    bottom: -50px;
-    animation: bobler 8s infinite;
-    animation-delay: 0s;
+    left: 15%;                         /* 15% fra venstre kant */
+    bottom: -50px;                     /* Starter under skærmen */
+    animation: bobler 8s infinite;     /* 8 sekunders cyklus */
+    animation-delay: 0s;               /* Starter med det samme */
 }
 
+/* BOBLE 2 - Mindste, centrum-venstre */
 #boble2 {
     width: 15px;
     height: 15px;
     left: 35%;
     bottom: -50px;
-    animation: bobler 6s infinite;
-    animation-delay: 2s;
+    animation: bobler 6s infinite;     /* Hurtigere (6s) */
+    animation-delay: 2s;               /* 2 sekunders forsinkelse */
 }
 
+/* BOBLE 3 - Største, centrum-højre */
 #boble3 {
     width: 25px;
     height: 25px;
     left: 60%;
     bottom: -50px;
-    animation: bobler 10s infinite;
-    animation-delay: 4s;
+    animation: bobler 10s infinite;    /* Langsomste (10s) */
+    animation-delay: 4s;               /* 4 sekunders forsinkelse */
 }
 
+/* BOBLE 4 - Mellem størrelse, højre side */
 #boble4 {
     width: 18px;
     height: 18px;
     left: 80%;
     bottom: -50px;
-    animation: bobler 7s infinite;
-    animation-delay: 1s;
+    animation: bobler 7s infinite;     /* 7 sekunders cyklus */
+    animation-delay: 1s;               /* 1 sekunds forsinkelse */
 }
 
+/* BOBLE ANIMATION - Simulerer bobler der stiger til overfladen */
 @keyframes bobler {
+    /* START: Under skærmen, usynlig */
     0% {
-        bottom: -50px;
-        opacity: 0;
+        bottom: -50px;                 /* Under synligt område */
+        opacity: 0;                    /* Helt gennemsigtig */
     }
+    /* FADE IN: Bliver synlig kort efter start */
     10% {
-        opacity: 1;
+        opacity: 1;                    /* Fuld synlighed */
     }
+    /* STABIL FASE: Forbliver synlig gennem det meste af rejsen */
     90% {
-        opacity: 1;
+        opacity: 1;                    /* Fuld synlighed */
     }
+    /* FADE OUT: Forsvinder ved toppen */
     100% {
-        bottom: 100vh;
-        opacity: 0;
+        bottom: 100vh;                 /* 100vh = 100% af viewport højde (top af skærm) */
+        opacity: 0;                    /* Fade ud ved overfladen */
     }
 }

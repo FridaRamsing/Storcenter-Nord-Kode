@@ -1,55 +1,192 @@
 <!DOCTYPE html>
+
+<!-- ROOT ELEMENT - Definerer sproget for hele dokumentet -->
+<!-- lang="en" hjælper skærmlæsere og søgemaskiner med at forstå indholdet -->
 <html lang="en">
+
+<!-- HEAD SEKTION - Metadata og ressourcer (ikke synligt for brugeren) -->
 <head>
+    <!-- KARAKTER ENCODING - UTF-8 understøtter alle internationale tegn -->
+    <!-- Skal være første element i head for at fungere korrekt -->
     <meta charset="UTF-8">
+    
+    <!-- RESPONSIVE DESIGN - Kontrollerer hvordan siden vises på mobile enheder -->
+    <!-- width=device-width: Bruger enhedens faktiske bredde -->
+    <!-- initial-scale=1.0: Ingen zoom ved indlæsning -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SIDE TITEL - Vises i browser tab og bogmærker -->
     <title>Storcenter Nord</title>
+    
+    <!-- EKSTERN CSS - Linker til vores hovedstilark -->
+    <!-- href bruger relativ sti fra HTML-filens placering -->
     <link rel="stylesheet" href="css/css.css">
 
+<!-- Kübra - Medarbejder identificering -->
+
+<!-- INLINE CSS STYLING - CSS direkte i HTML dokumentet -->
 <style>
 
+/* FULD HØJDE SETUP - Sikrer html og body fylder hele viewport */
+/* Dette er nødvendigt for korrekt baggrundsdækning og positioning */
 html, body {
     height: 100%;
 }
 
-/* Backup baggrund hvis CSS-filen ikke loader */
+/* BACKUP BAGGRUND - Sikkerhedskopiering hvis den eksterne CSS-fil fejler */
+/* Denne baggrund loader kun hvis css/css.css ikke kan tilgås */
 body {
     background-image: url("images/baggrund hav 1.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-size: cover;           /* Dækker hele skærmen uden forvrængning */
+    background-position: center;      /* Centrerer billedet */
+    background-repeat: no-repeat;     /* Forhindrer gentaget mønster */
 }
 
 </style>
 </head>
+
+<!-- BODY - Alt synligt indhold på siden -->
 <body>
 
+<!-- MAIN CONTENT CONTAINER - Semantisk HTML5 element for hovedindhold -->
+<!-- id="info" giver mulighed for JavaScript og CSS targeting -->
 <main id="info">
 
-    <!-- fisk 1-->
+    <!-- ==================== FISK SEKTION ==================== -->
+    
+    <!-- FISK 1 - HUGO (Primær interaktiv fisk) -->
+    <!-- Hver fisk er wrappet i en div for positioning og styling -->
     <div id="hugo">
+        <!-- IMG ELEMENT: -->
+        <!-- src="images/png.gif" - Relativ sti til fisk-animation -->
+        <!-- alt="Hugo" - Tilgængelighedstekst for skærmlæsere og hvis billede ikke loader -->
         <img src="images/png.gif" alt="Hugo">
     </div>
 
-    <!-- fisk 2-->
+    <!-- FISK 2 - SEKUNDÆR FISK -->
+    <!-- Følger samme struktur som Hugo for konsistens -->
     <div id="fisk2">
         <img src="images/fisk2.2.gif" alt="Fisk 2">
     </div>
 
-    <!-- fisk 3-->
+    <!-- FISK 3 - ANTIAS (Tredje interaktiv fisk) -->
+    <!-- Bruger antias.gif - en anden fisketype for variation -->
     <div id="fisk3">
         <img src="images/antias.gif" alt="antias">
     </div>
 
-    <!-- Bobler -->
+    <!-- ==================== BOBLE SYSTEM ==================== -->
+    
+    <!-- BOBLE ELEMENTER - Skaber animerede luftbobler -->
+    <!-- Hver boble er en tom div der styles med CSS -->
+    <!-- class="boble" - Fælles styling for alle bobler -->
+    <!-- Unikke id'er tillader individuel positionering og timing -->
+    
+    <!-- BOBLE 1 - Venstre side af akvariet -->
     <div class="boble" id="boble1"></div>
+    
+    <!-- BOBLE 2 - Centrum-venstre -->
     <div class="boble" id="boble2"></div>
+    
+    <!-- BOBLE 3 - Centrum-højre -->
     <div class="boble" id="boble3"></div>
+    
+    <!-- BOBLE 4 - Højre side af akvariet -->
     <div class="boble" id="boble4"></div>
-
 
 </main>
 
+<!-- Kübra - Medarbejder identificering -->
+
+<!-- KOMMENTERET JAVASCRIPT KODE - Tidligere eksperimenter med fisk data-strukturer -->
+<!-- Dette er proof-of-concept kode der viser hvordan fisk-information kunne struktureres -->
+<!-- 
+DATASTRUKTUR FORKLARING:
+
+let fisk = {
+    navn: "hugo",                    // Fiskens navn som string
+    ting: [                          // Array med egenskaber
+        "blå",                       // Farve
+        "2 år",                      // Alder  
+        "fiskemad"                   // Føde
+    ]
+}
+
+fisk.ting.sort()                     // Array metode: sorterer alfabetisk
+
+DYNAMISK HTML GENERERING:
+demo.innerHTML = fisk.navn + "<ul>"  // Starter med navn + ul tag
+
+FOR LOOP til at gennemgå array:
+for (let i = 0; i < fisk.ting.length; i++) {
+    demo.innerHTML += "<li>" + fisk.ting[i] + "</li>"  // Tilføjer hver ting som list item
+}
+
+demo.innerHTML += "</ul>"            // Afslutter listen
+
+MULTIPLE FISK ARRAY:
+let fiskene = [                      // Array af objekter
+    { navn: "hugo", ting: [...] },   // Første fisk objekt
+    { navn: "Chromis", ting: [...] }, // Andet fisk objekt  
+    { navn: "antias", ting: [...] }   // Tredje fisk objekt
+]
+
+Denne struktur kunne bruges til at skabe dynamisk fisk-information
+i stedet for hardkodet HTML i JavaScript funktionerne.
+-->
+
+<!-- let fisk = {
+    navn: "hugo",
+    ting: [
+        "blå",
+        "2 år", 
+        "fiskemad"
+    ]
+}
+
+fisk.ting.sort() //sorterer listen alfabetisk//
+
+demo.innerHTML = fisk.navn + "<ul>"
+
+for (let i = 0; i < fisk.ting.length; i++) {
+    demo.innerHTML += "<li>" + fisk.ting[i] + "</li>"
+}
+
+demo.innerHTML += "</ul>"
+
+
+let fiskene = [
+    {
+        navn: "hugo",
+        ting: [
+            "blå",
+            "2 år",
+            "fiskemad"
+        ]
+    },
+    {
+        navn: "Chromis", 
+        ting: [
+            "lyseblå",
+            "5 år",
+            "fiskebobler"
+        ]
+    },
+    {
+        navn: "antias",
+        ting: [
+            "rød", 
+            "1 år",
+            "gæller"
+        ]
+    }
+-->
+
+<!-- JAVASCRIPT INKLUSION - Linker til ekstern JavaScript fil -->
+<!-- Placeret i bunden af body for at sikre HTML er loaded før JavaScript kører -->
+<!-- src="js/js.js" - Relativ sti til JavaScript fil -->
 <script src="js/js.js"></script>
+
 </body>
 </html>
+
